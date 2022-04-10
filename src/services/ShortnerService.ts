@@ -1,10 +1,10 @@
 import { Func } from "node-worker-threads-pool/dist/types";
-import { ShortnerTypes } from "../constants/common";
+import { ShortenerTypes } from "../constants/common";
 import shortnerFactory from "../factories/shortnerFactory";
-import { ShortnerServiceInterface } from "../interfaces/ShortnerServiceInterface";
+import { ShortenerServiceInterface } from "../interfaces/ShortenerServiceInterface";
 
-export class ShortnerService implements ShortnerServiceInterface {
-    async shorten(hash: string, type: ShortnerTypes): Promise<string> {
+export class ShortnerService implements ShortenerServiceInterface {
+    async shorten(hash: string, type: ShortenerTypes): Promise<string> {
         try {
             const shortner: Function = shortnerFactory(type);
             const shortString: string = await global.dynamicPool.exec({

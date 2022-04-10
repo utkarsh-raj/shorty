@@ -4,7 +4,7 @@ import hashTaskFactory from '../factories/hashTaskFactory';
 import { HashServiceInterface } from '../interfaces/HashServiceInterface';
 
 export class HashService implements HashServiceInterface {
-    async makeHash(stringToHash: string, type: HashTypes) {
+    async makeHash(stringToHash: string, type: HashTypes): Promise<string> {
         try {
             const hashTask: Function = hashTaskFactory(type);
             const hashedString: string = await global.dynamicPool.exec({

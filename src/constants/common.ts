@@ -2,6 +2,6 @@ export enum HashTypes {
     MD5 = 'md5'
 }
 
-export enum ShortnerTypes {
+export enum ShortenerTypes {
     FiveLengthId = 'fiveLengthId'
 }

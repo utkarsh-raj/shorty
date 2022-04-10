@@ -1,8 +1,8 @@
-import { ShortnerTypes } from "../constants/common";
-import fiveLengthId from "../utils/shortners/fiveLengthId";
+import { ShortenerTypes } from "../constants/common";
+import fiveLengthId from "../services/shortners/fiveLengthId";
 
-export default (type: ShortnerTypes): Function => {
+export default (type: ShortenerTypes): Function => {
     // Method to perform MD5 Hashing for the given string
-    if (type === ShortnerTypes.FiveLengthId) return fiveLengthId;
+    if (type === ShortenerTypes.FiveLengthId) return fiveLengthId;
     throw new Error('Method is not defined');
 };

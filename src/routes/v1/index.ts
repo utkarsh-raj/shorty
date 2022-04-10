@@ -5,7 +5,17 @@ const app: Express = express();
 
 app.get('/health', (req: Request, res: Response) => {
     res.status(200).send({
-        status: 'ok'
+        status: "Healthy",
+        services: {
+            "database": {
+                status: "Healthy",
+                reason: "NA"
+            },
+            "api": {
+                status: "Healthy",
+                reason: "NA"
+            }
+        }
     })
 });
 
