@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { HashTypes, ShortenerTypes } from "../constants/common";
+import { DbEngineTypes, HashTypes, ShortenerTypes } from "../constants/common";
 import { UrlShortner } from "../services/UrlShortner";
 
 export default async (req: Request, res: Response) => {
@@ -9,7 +9,8 @@ export default async (req: Request, res: Response) => {
     const shortUrl: string = await urlShortener.process(
         url,
         HashTypes.MD5,
-        ShortenerTypes.FiveLengthId
+        ShortenerTypes.FiveLengthId,
+        DbEngineTypes.MongoDB
     );
     return res.status(200).send({
         status: 'success',

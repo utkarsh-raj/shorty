@@ -6,12 +6,10 @@ const urlMappingSchema = new mongoose.Schema({
         type: String,
         index: { unique: true }
     },
-    created_at: {
-        type: Date,
-        default: Date.now
-    },
-    accessed_at: Date
+    expire_at: Date
 });
+
+urlMappingSchema.index({ expire_at: 1 }, { expireAfterSeconds: 0 });
 
 const UrlMapping = mongoose.model('UrlMapping', urlMappingSchema);
 

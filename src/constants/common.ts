@@ -5,3 +5,7 @@ export enum HashTypes {
 export enum ShortenerTypes {
     FiveLengthId = 'fiveLengthId'
 }
+
+export enum DbEngineTypes {
+    MongoDB = 'mongoDb'
+}

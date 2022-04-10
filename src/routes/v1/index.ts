@@ -1,5 +1,6 @@
 import express, { Express, Request, Response } from 'express';
 import postUrl from '../../controllers/postUrl';
+import getUrl from '../../controllers/getUrl';
 
 const app: Express = express();
 
@@ -20,6 +21,7 @@ app.get('/health', (req: Request, res: Response) => {
 });
 
 
+app.get('/:shortUrl', getUrl);
 app.post('/url', postUrl);
 
 export default app;
