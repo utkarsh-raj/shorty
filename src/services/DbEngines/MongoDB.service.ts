@@ -1,5 +1,6 @@
 import moment from "moment";
 import mongoose from "mongoose";
+import { MappingNotFoundInDb } from "../../common/errorClasses";
 import { DbServiceInterface } from "../../interfaces/DbServiceInterface";
 import UrlMapping from "../../models/MongoDB/UrlMapping.model";
 
@@ -13,6 +14,7 @@ export class MongoDBService implements DbServiceInterface {
     }
 
     async saveRow(originalUrl: string, shortUrl: string, createdAt: Date): Promise<void> {
+        this.connect();
         const toExpireTimestamp: Date = moment().add(+(process.env.TTL ?? 3600), 'seconds').toDate();
         const mapping = new UrlMapping({
             original_url: originalUrl,
@@ -23,9 +25,9 @@ export class MongoDBService implements DbServiceInterface {
     }
 
     async getRow(shortUrl: string): Promise<string> {
+        this.connect();
         const originalUrlObject: mongoose.Document | null = await UrlMapping.findOne({ short_url: shortUrl });
-        console.log(originalUrlObject)
-        if (originalUrlObject === null) throw new Error('entry not found')
+        if (originalUrlObject === null) throw new MappingNotFoundInDb('entry not found');
         const originalUrl: string  = originalUrlObject.get('original_url');
         return originalUrl;
     }

@@ -1,6 +1,7 @@
 import express, { Express, Request, Response } from 'express';
 import postUrl from '../../controllers/postUrl';
 import getUrl from '../../controllers/getUrl';
+import asyncWrap from '../../utils/asyncWrap';
 
 const app: Express = express();
 
@@ -21,7 +22,7 @@ app.get('/health', (req: Request, res: Response) => {
 });
 
 
-app.get('/:shortUrl', getUrl);
-app.post('/url', postUrl);
+app.get('/:shortUrl', asyncWrap(getUrl));
+app.post('/url', asyncWrap(postUrl));
 
 export default app;

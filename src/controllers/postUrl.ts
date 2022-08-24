@@ -8,7 +8,7 @@ export default async (req: Request, res: Response) => {
     const urlShortener = new UrlShortner();
     const shortUrl: string = await urlShortener.process(
         url,
-        HashTypes.MD5,
+        HashTypes.MD5, // factory here
         ShortenerTypes.FiveLengthId,
         DbEngineTypes.MongoDB
     );
