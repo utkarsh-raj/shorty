@@ -9,7 +9,7 @@ import asyncWrap from './utils/asyncWrap';
 const uri = process.env.MONGO_URI;
 
 const app: Express = express();
-const port = 8000;
+const port = 3025;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
