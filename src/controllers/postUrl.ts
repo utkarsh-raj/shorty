@@ -3,6 +3,7 @@ import { DbEngineTypes, HashTypes, ShortenerTypes } from "../constants/common";
 import { UrlShortner } from "../services/UrlShortner";
 
 export default async (req: Request, res: Response) => {
+    console.log(req.body)
     // Validate the input
     const { url } = req.body;
     const urlShortener = new UrlShortner();

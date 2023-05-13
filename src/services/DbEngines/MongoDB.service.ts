@@ -15,6 +15,7 @@ export class MongoDBService implements DbServiceInterface {
 
     async saveRow(originalUrl: string, shortUrl: string, createdAt: Date): Promise<void> {
         this.connect();
+        console.log('test')
         const toExpireTimestamp: Date = moment().add(+(process.env.TTL ?? 3600), 'seconds').toDate();
         const mapping = new UrlMapping({
             original_url: originalUrl,
